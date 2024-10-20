@@ -11,4 +11,6 @@ async-io = "2.3.4"
 simple_error = { git = "https://github.com/brandonros/simple_error.git" }
 # logging
 log = "0.4.22"
+# stack trace
+backtrace = "0.3.74"
 
