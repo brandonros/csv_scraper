@@ -5,7 +5,6 @@ use std::time::Duration;
 
 use async_executor::Executor;
 use async_io::Timer;
-use backtrace::Backtrace;
 use simple_error::SimpleResult;
 
 pub trait ScrapeOperation: Send + Sync {
@@ -26,9 +25,7 @@ impl Scraper {
                 match op.await {
                     Ok(_) => (),
                     Err(err) => {
-                        let bt = Backtrace::new();
                         log::error!("error scraping: {err}");
-                        log::error!("stack trace:\n{bt:?}");
                     }
                 }
             });
