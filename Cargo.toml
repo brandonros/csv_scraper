@@ -1,0 +1,14 @@
+[package]
+name = "scraper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# async
+async-executor = "1.13.1"
+async-io = "2.3.4"
+# errors
+simple_error = { path = "../simple_error" }
+# logging
+log = "0.4.22"
+
