@@ -8,7 +8,7 @@ use async_io::Timer;
 use simple_error::SimpleResult;
 
 pub trait ScrapeOperation: Send + Sync {
-    fn execute(&self) -> Pin<Box<dyn Future<Output = SimpleResult<()>> + Send + 'static>>;
+    fn execute(&self, executor: Arc<Executor<'static>>) -> Pin<Box<dyn Future<Output = SimpleResult<()>> + Send + 'static>>;
 }
 
 pub struct Scraper;
@@ -20,7 +20,7 @@ impl Scraper {
         operation: T,
     ) -> SimpleResult<()> {
         loop {
-            let op = operation.execute();
+            let op = operation.execute(executor.clone());
             let _handle = executor.spawn(async move {
                 match op.await {
                     Ok(_) => (),
