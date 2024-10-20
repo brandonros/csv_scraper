@@ -8,7 +8,7 @@ edition = "2021"
 async-executor = "1.13.1"
 async-io = "2.3.4"
 # errors
-simple_error = { path = "../simple_error" }
+simple_error = { git = "https://github.com/brandonros/simple_error.git" }
 # logging
 log = "0.4.22"
 
