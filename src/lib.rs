@@ -35,7 +35,6 @@ impl<T: ScrapeOperation + 'static> CsvScraper<T> {
     async fn append_to_file(file: &Arc<Mutex<File>>, data: &str) -> SimpleResult<()> {
         let mut file = file.lock().await;
         file.write_all(data.as_bytes()).await?;
-        file.write_all("\n".as_bytes()).await?;
         file.flush().await?;
         Ok(())
     }

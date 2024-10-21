@@ -8,7 +8,9 @@ struct SimpleScraper;
 
 impl ScrapeOperation for SimpleScraper {
     fn execute(&self, _executor: Arc<Executor<'static>>) -> Pin<Box<dyn Future<Output = SimpleResult<String>> + Send + 'static>> {
-        Box::pin(async { Ok("test".to_string()) })
+        Box::pin(async { 
+            Ok("1234,test\n".to_string())
+        })
     }
 }
 
